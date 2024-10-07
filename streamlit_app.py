@@ -86,6 +86,8 @@ if prompt := st.chat_input("What is up?"):
     context.append({'role':'user', 'content':prompt})
 
     # Generate a response using the OpenAI API.
+    messages =  context.copy()
+
     stream = client.chat.completions.create(
         model="gpt-4",
          messages=[
