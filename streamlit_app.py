@@ -92,7 +92,7 @@ if prompt := st.chat_input("What is up?"):
         model="gpt-4",
          messages=[
             {"role": m["role"], "content": m["content"]}
-            for m in messages
+            for m in context
         ],   
                         
         stream=True,
@@ -103,3 +103,4 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         response = st.write_stream(stream)
     st.session_state.messages.append({"role": "assistant", "content": response})
+    context.append({'role':'assistant', 'content':response})
