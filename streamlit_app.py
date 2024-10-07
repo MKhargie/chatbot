@@ -2,18 +2,13 @@ import streamlit as st
 from openai import OpenAI
 
 # Show title and description.
-st.title("💬 Chatbot")
+st.title("Lawn Care Chatbot")
 st.write(
-    "This is a simple chatbot that uses OpenAI's GPT-4 model to generate responses. "
-    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
-    "You can also learn how to build this app step by step by [following our tutorial](https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps)."
-)
+    "Welcome to the Lawn Care Chatbot! "
+   )
 
-# Ask user for their OpenAI API key via `st.text_input`.
-# Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
-# via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
+
 openai_api_key = st.secrets["apikey"]
-
 
 
 # Create an OpenAI client.
@@ -76,7 +71,7 @@ context =  [{'role':'system', 'content':"""
                         ]
 
 
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("Where do you live?"):
 
     # Store and display the current prompt.
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -86,7 +81,6 @@ if prompt := st.chat_input("What is up?"):
     context.append({'role':'user', 'content':prompt})
 
     # Generate a response using the OpenAI API.
-    messages =  context.copy()
 
     stream = client.chat.completions.create(
         model="gpt-4",
