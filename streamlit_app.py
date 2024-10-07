@@ -41,8 +41,7 @@ if prompt := st.chat_input("What is up?"):
     # Generate a response using the OpenAI API.
     stream = client.chat.completions.create(
         model="gpt-4",
-        messages =  [  
-                        {'role':'system', 'content':"""
+        messages =  [{'role':'system', 'content':"""
                         You are a lawncare expert. Your job is to create a plan/schedule for lawncare, taking into account the weather, the type of grass, the soil temp, and any previous product applications.  I prefer Yard Mastery products. \
                         1. Retrieve the users history, including product application. If this is the first conversation with the user then ask about any applications done for the season so far and their dates. \
                         2. If the user provides a location, look up what type of grass lives in that location and use that information in your answer. \
@@ -82,7 +81,7 @@ if prompt := st.chat_input("What is up?"):
                         <Fertilization> \
                         <Products> <Link> \
                         <Application Instructions> """},    
-                        {'role':'user', 'content':'I live in Oceanside,NY'},   
+                        {'role':'user', 'content':'I live in Oceanside,NY'}],   
                         
         stream=True,
     )
