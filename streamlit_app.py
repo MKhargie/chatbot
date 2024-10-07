@@ -72,8 +72,8 @@ context =  [{'role':'system', 'content':"""
                         <Application Instructions> \
                         <Fertilization> \
                         <Products> <Link> \
-                        <Application Instructions> """},    
-                        {'role':'user', 'content':'I live in Oceanside,NY'}]
+                        <Application Instructions> """}    
+                        ]
 
 
 if prompt := st.chat_input("What is up?"):
