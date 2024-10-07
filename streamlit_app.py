@@ -92,7 +92,7 @@ if prompt := st.chat_input("What is up?"):
         model="gpt-4",
          messages=[
             {"role": m["role"], "content": m["content"]}
-            for m in st.session_state.messages
+            for m in messages
         ],   
                         
         stream=True,
