@@ -40,11 +40,12 @@ if prompt := st.chat_input("What is up?"):
 
     # Generate a response using the OpenAI API.
     stream = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": m["role"], "content": m["content"]}
-            for m in st.session_state.messages
-        ],
+        model="gpt-4",
+        messages =  [  
+                        {'role':'system', 'content':'You are an assistant that speaks like Shakespeare.'},    
+                        {'role':'user', 'content':'tell me a joke'},   
+                        {'role':'assistant', 'content':'Why did the chicken cross the road'},   
+                        {'role':'user', 'content':'I don\'t know'}  ],
         stream=True,
     )
 
